@@ -1,3 +1,5 @@
+SRC: https://www.youtube.com/watch?v=79xFyOc_eEY&t=389s
+
 CREATE 2 EC2 Instances (Anisble-Control-Server and Ansible-Host-1)
 EC2: 
     Step 1: Choose an Amazon Machine Image (AMI): Red Hat Enterprise Linux 7.4 (HVM), SSD Volume Type
@@ -12,4 +14,30 @@ EC2:
 
 After creating the 2 Instances, rename to Ansible-Server to Ansible-Control-Server and Ansible-Host-1
 
-Log in EC2 using MobaXterm (need pem.key for SSH)
+Log into both EC2's using MobaXterm (need AnsibleKey.pem for SSH)
+
+Public IPv4 address: 18.220.35.201
+Public IPv4 address: 3.145.13.194
+AnsibleKey.pem
+
+18.220.35.201(Anisble-Control-Server)(rename it)
+login as: ec2-user
+sudo su - (update system)
+yum update
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install ansible
+ansible --version
+useradd ansadmin
+passwd ansadmin
+NewPassword: admin123456
+Retype new password: admin123456
+visudo
+
+3.145.13.194(Ansible-Host-1)(rename it)
+login as:
+sudo su -
+yum update -y
+useradd ansadmin
+passwd ansadmin
+NewPassword: admin123456
+Retype new password: admin123456
